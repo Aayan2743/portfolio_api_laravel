@@ -25,6 +25,31 @@ class CategoryController extends Controller
         ]);
     }
 
+
+
+
+  public function getCategories(Request $request)
+{
+    $query = Category::query();
+
+    // 🔎 Search by name or slug (recommended)
+    if ($request->search) {
+        $search = $request->search;
+
+        $query->where(function ($q) use ($search) {
+            $q->where('name', 'LIKE', "%{$search}%")
+              ->orWhere('slug', 'LIKE', "%{$search}%");
+        });
+    }
+
+    $categories = $query->latest()->get(); // ✅ No pagination
+
+    return response()->json([
+        'success' => true,
+        'data'    => $categories,
+    ]);
+}
+
     // STORE
     public function store(Request $request)
     {

@@ -130,19 +130,19 @@ class OtpAuthController extends Controller
 
         /* ================= SEND WELCOME MESSAGE ================= */
 
-        if (! $user->is_welcome_sent && $user->phone) {
+        // if (! $user->is_welcome_sent && $user->phone) {
 
-            $message = "🎉 Welcome to Hamsini Silks!\n\n"
-                . "Your account has been successfully verified.\n"
-                . "We are excited to serve you ❤️\n\n"
-                . "Happy Shopping 🛍️";
+        //     $message = "🎉 Welcome to Hamsini Silks!\n\n"
+        //         . "Your account has been successfully verified.\n"
+        //         . "We are excited to serve you ❤️\n\n"
+        //         . "Happy Shopping 🛍️";
 
-            $this->messenger->send($user->phone, $message);
+        //     $this->messenger->send($user->phone, $message);
 
-            $user->update([
-                'is_welcome_sent' => true,
-            ]);
-        }
+        //     $user->update([
+        //         'is_welcome_sent' => true,
+        //     ]);
+        // }
 
         // $token = $user->createToken('otp_login')->plainTextToken;
 
